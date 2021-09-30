@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: 
       -main
-    types: [submitted]
+    types: [merged]
 
 jobs:
   compile:
@@ -27,6 +27,7 @@ jobs:
   
   deploy:
     needs: compile
+    if: git.refs.head == "master"
     runs-on: ubuntu-latest
     
     steps:
