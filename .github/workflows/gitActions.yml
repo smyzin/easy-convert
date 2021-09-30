@@ -30,6 +30,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn cache clean && yarn --no-progress
       - name: Build
         run: yarn build
       - name: GH Pages deploy
