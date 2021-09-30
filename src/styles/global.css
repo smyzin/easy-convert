@@ -2,17 +2,17 @@
 	--black: #3b434e;
 	--white: white;
 
-	--primary: #7653fc;
-	--primary-90: rgba(118, 83, 252, 0.9);
-	--primary-80: rgba(118, 83, 252, 0.8);
-	--primary-70: rgba(118, 83, 252, 0.7);
-	--primary-60: rgba(118, 83, 252, 0.6);
-	--primary-50: rgba(118, 83, 252, 0.5);
-	--primary-40: rgba(118, 83, 252, 0.4);
-	--primary-30: rgba(118, 83, 252, 0.3);
-	--primary-20: rgba(118, 83, 252, 0.2);
-	--primary-10: rgba(118, 83, 252, 0.1);
-	--primary-hover: #6344DF;
+	--primary: rgba(81, 122, 255, 1.0)
+	--primary-90: rgba(81, 122, 255, 0.9);
+	--primary-80: rgba(81, 122, 255, 0.8);
+	--primary-70: rgba(81, 122, 255, 0.7);
+	--primary-60: rgba(81, 122, 255, 0.6);
+	--primary-50: rgba(81, 122, 255, 0.5);
+	--primary-40: rgba(81, 122, 255, 0.4);
+	--primary-30: rgba(81, 122, 255, 0.3);
+	--primary-20: rgba(81, 122, 255, 0.2);
+	--primary-10: rgba(81, 122, 255, 0.1);
+	--primary-hover: var(--primary-60);
 
 	--red: #FC836D;
 	--green: #1DC37E;
