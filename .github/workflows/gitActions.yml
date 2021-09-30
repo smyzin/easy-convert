@@ -4,7 +4,8 @@
 name: EasyConvert Workflows
 
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   compile:
