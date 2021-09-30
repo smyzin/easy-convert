@@ -5,43 +5,14 @@ name: EasyConvert Workflows
 
 on:
   push:
-  pull_request:
-    types: [merged]
-    branches: 
-      -main
 
 jobs:
   compile:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-
+    
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: yarn cache clean && yarn --no-progress
+      run: yarn --no-progress
     - name: Compile code
       run: yarn tsc --skipLibCheck
-  
-  deploy:
-    needs: compile
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-      - name: run install & build
-        run:
-          yarn cache clean &&
-          yarn --no-progress &&
-          yarn run build
-      - name: GH Pages deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        uses: Cecilapp/GitHub-Pages-deploy@3.2.0
-        with:
-          email: smyzin.work@gmail.com
-          build_dir: build
-          commit_message: Deploy updated version
