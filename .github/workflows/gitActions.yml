@@ -27,7 +27,7 @@ jobs:
   
   deploy:
     needs: compile
-    if: github.event.review.state == 'approved'
+    if: contains(github.ref, "main")
     runs-on: ubuntu-latest
     
     steps:
