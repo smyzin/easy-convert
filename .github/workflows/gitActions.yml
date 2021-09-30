@@ -34,7 +34,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: run install & build
         run:
-          yarn cache clean && yarn --no-progress
+          yarn cache clean &&
+          yarn --no-progress &&
           yarn run build
       - name: GH Pages deploy
         env:
