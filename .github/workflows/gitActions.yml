@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: yarn cache clean && yarn
+      run: yarn cache clean && yarn --no-progress
     - name: Compile code
       run: yarn tsc --skipLibCheck
   
@@ -30,8 +30,6 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      - name: Install modules
-        run: yarn cache clean && yarn
       - name: Build
         run: yarn build
       - name: GH Pages deploy
