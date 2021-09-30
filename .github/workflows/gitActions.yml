@@ -26,15 +26,15 @@ jobs:
   
   deploy:
     needs: compile
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: "github.ref == main"
     runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v2
-      - name: Install modules
-        run: yarn cache clean && yarn --no-progress
-      - name: Build
-        run: yarn build
+      - name: run install & build
+        run:
+          yarn cache clean && yarn --no-progress
+          run build
       - name: GH Pages deploy
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
