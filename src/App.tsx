@@ -56,7 +56,7 @@ function App(): JSX.Element {
 					setValue={setValueJson}
 				></TextField>
 				<button className="button round green-light button__mark" title="Set a test JSON" onClick={setTest}>?</button>
-				<button className="button primary button__submit" onClick={clickConvert}>Convert</button>
+				<button className="button primary button__submit" onClick={clickConvert}>Convert it</button>
 				<TextField
 					name="ts-field"
 					type="ts"
