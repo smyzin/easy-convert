@@ -10,7 +10,7 @@ on:
       -main
 
 jobs:
-  compile-and-test:
+  compile:
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,13 +25,15 @@ jobs:
       run: yarn tsc --skipLibCheck
   
   deploy:
+    needs: compile
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
       - name: Install modules
         run: yarn cache clean && yarn
       - name: Build
-        run: yarn run build
+        run: yarn build
       - name: GH Pages deploy
         uses: Cecilapp/GitHub-Pages-deploy@3.2.0
         with:
