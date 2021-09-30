@@ -1,6 +1,8 @@
 import { checkJsonString, checkType } from '../hepler';
 import { IResult, IObject, IComplexResult } from './converter.props';
 
+let listOfNames = new Set();
+
 export function initConverting(initJSON: string): string {
 	const json = checkJsonString(initJSON);
 	const type = checkType(json);
@@ -9,9 +11,18 @@ export function initConverting(initJSON: string): string {
 	return exportInterfaces(mappedJSON);
 }
 
+function checkIfNameExist(name: string, index: number = 0) {
+	let updatedName = index > 0 ? name + index : name;
+	
+	if (listOfNames.has(updatedName))
+		updatedName = checkIfNameExist(updatedName, index + 1);
+	else listOfNames.add(updatedName);
+	return updatedName;
+}
+
 export function createInterfaceName(name?: string): string {
 	const interfaceName = name && name.length > 0 ? name : 'root';
-	return 'I' + interfaceName[0].toUpperCase() + interfaceName.slice(1);
+	return checkIfNameExist('I' + interfaceName[0].toUpperCase() + interfaceName.slice(1));
 }
 
 export function exportInterfaces(list: IResult[]): string {
