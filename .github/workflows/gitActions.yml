@@ -11,7 +11,6 @@ on:
 
 jobs:
   compile-and-test:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,15 +23,18 @@ jobs:
       run: yarn cache clean && yarn
     - name: Compile code
       run: yarn tsc --skipLibCheck
-    - name: Test code
-      run: yarn run test
   
   deploy:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Install modules
+        run: yarn cache clean && yarn
+      - name: Build
+        run: yarn run build
       - name: GH Pages deploy
         uses: Cecilapp/GitHub-Pages-deploy@3.2.0
         with:
           email: smyzin.work@gmail.com
+          build_dir: build
           commit_message: Deploy updated version
