@@ -35,7 +35,7 @@ jobs:
       - name: run install & build
         run:
           yarn cache clean && yarn --no-progress
-          run build
+          yarn run build
       - name: GH Pages deploy
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
