@@ -6,6 +6,7 @@ name: EasyConvert Workflows
 on:
   push:
   pull_request:
+    types: [merged]
     branches: 
       -main
 
@@ -26,7 +27,7 @@ jobs:
   
   deploy:
     needs: compile
-    if: "github.ref == 'main'"
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     
     steps:
