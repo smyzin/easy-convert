@@ -35,6 +35,8 @@ jobs:
       - name: Build
         run: yarn build
       - name: GH Pages deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         uses: Cecilapp/GitHub-Pages-deploy@3.2.0
         with:
           email: smyzin.work@gmail.com
